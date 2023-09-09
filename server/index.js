@@ -18,19 +18,18 @@ app.use(bodyParser.json());
 
 //routes 
 
-app.use('/api',authRoutes)
-app.use('/api',testRoutes)
+app.use('/api', authRoutes)
+app.use('/api', testRoutes)
 
 
 const port = process.env.PORT || 8080;
 
 
 mongoose
-  .connect('mongodb+srv://lessonify:Ritik12345@cluster0.ctxug.mongodb.net/lessonify',{ useNewUrlParser: true ,useUnifiedTopology: true}
-  )
-  .then(result => {
-    app.listen(port);
-  })
-  .catch(err => console.log(err));
+    .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true }
+    )
+    .then(result => {
+        app.listen(port);
+    })
+    .catch(err => console.log(err));
 
- 
